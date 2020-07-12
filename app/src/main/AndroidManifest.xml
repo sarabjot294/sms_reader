@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.AnalyseSMS"></activity>
+        <activity android:name=".activities.TagBarChartActivity"></activity>
+        <activity android:name=".activities.PieCharts" />
+        <activity android:name=".activities.AnalyseSMS" />
         <activity
             android:name=".activities.AppPersmission"
             android:launchMode="singleTop">

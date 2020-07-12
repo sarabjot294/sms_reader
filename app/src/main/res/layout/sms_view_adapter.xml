@@ -12,11 +12,20 @@
     android:weightSum="5">
 
     <TextView
+        android:id="@+id/no"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight=".5"
+        android:text="No."
+        android:textSize="15dp" />
+
+    <TextView
         android:id="@+id/sms_content"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_weight="3"
+        android:layout_weight="2.5"
         android:text="SMS TEXT"
         android:textSize="15dp" />
 

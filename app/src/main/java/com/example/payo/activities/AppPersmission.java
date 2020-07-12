@@ -29,11 +29,14 @@ public class AppPersmission extends AppCompatActivity {
         setContentView(R.layout.activity_app_permissions);
         appPermissionButton =findViewById(R.id.button);
 
+        //To ask permission if not granted
         askPermission(AppPersmission.this, PERMISSIONS);
 
+        //If permission graned, move to next activity
         if(permissionGranted)
             goToNextActivity(AppPersmission.this);
 
+        //OnClick listenter to ask permissions again, if denied earlier
         appPermissionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,7 +58,6 @@ public class AppPersmission extends AppCompatActivity {
 
     private void goToNextActivity(Context context)
     {
-        Toast.makeText(context,"Going to next actiivty successfully", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(context, AnalyseSMS.class);
         context.startActivity(intent);
         finish();

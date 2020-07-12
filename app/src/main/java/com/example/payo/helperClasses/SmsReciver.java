@@ -6,11 +6,17 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
 
+import com.example.payo.helperClasses.model.SmsDetails;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class SmsReciver{
 
     private Context ctx;
     Cursor cursor;
     ProgressDialog progressDialog;
+    List<SmsDetails> detailsList = new ArrayList<>();
 
 
     public SmsReciver(Context context){
@@ -18,38 +24,32 @@ public class SmsReciver{
 
     }
 
-    public void getSms()
+    public List<SmsDetails> getSms()
     {
-        showProgressDialog();
-
-        Log.d("TAG", "getSms: is progress dialog showing " + progressDialog.isShowing());
-
         cursor = ctx.getContentResolver().query(Uri.parse("content://sms/inbox"), null, null, null, null);
 
-       /* if (cursor.moveToFirst()) { // must check the result to prevent exception
+        if (cursor.moveToFirst()) { // must check the result to prevent exception
             do {
                 String msgData = "";
+                SmsDetails smsDetails = new SmsDetails();
                 for(int i=0;i<cursor.getColumnCount();i++)
                 {
                     msgData += " " + cursor.getColumnName(i) + ":" + cursor.getString(i);
-                    Log.d("TAG", "getSms: " + msgData + "\n");
+                    if(cursor.getColumnName(i).equals("body")) {
+                        smsDetails.setSmsText(cursor.getString(i));
+                        detailsList.add(smsDetails);
+                        Log.d("TAG", "getSms: added: " + cursor.getString(i));
+                    }
                 }
-
-                // use msgData
             } while (cursor.moveToNext());
         }
         else
         {
             Log.e("TAG", "getSms: No SMS found");
-        }*/
-
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
 
-        hideProgressDialog();
+        Log.d("TAG", "getSms: Size: " + detailsList.size());
+        return detailsList;
 
     }
 
