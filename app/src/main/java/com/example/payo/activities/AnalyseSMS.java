@@ -123,6 +123,7 @@ public class AnalyseSMS extends AppCompatActivity {
         Toast.makeText(AnalyseSMS.this," Please wait, fetching SMS...", Toast.LENGTH_SHORT).show();
         if(buttonClicked)
         {
+            //To stop multiple clicks
             return;
         }
         buttonClicked = true;
@@ -131,6 +132,8 @@ public class AnalyseSMS extends AppCompatActivity {
         showSmsList(AnalyseSMS.this, smsDetailsList);
         buttonClicked = false;
         searchClicked = false;
+        Toast.makeText(AnalyseSMS.this,"SMS Successfully fetched!", Toast.LENGTH_SHORT).show();
+
     }
 
     private void goToNextActivity(Context context, Class c)

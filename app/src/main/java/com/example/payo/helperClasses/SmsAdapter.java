@@ -85,6 +85,8 @@ public class SmsAdapter extends RecyclerView.Adapter<SmsAdapter.ViewHolder> {
                }
                holder.tags.setText(tags);
            }
+           else
+               holder.tags.setText("-");
        }
        catch (Exception e)
        {
